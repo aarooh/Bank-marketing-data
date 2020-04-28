@@ -22,7 +22,7 @@ numerical.remove('y')
 
 print('Categorical features:', categorical)
 print('Numerical features:', numerical)
-
+# %% 
 #Plot Answer variables of Answer attribute
 sns.countplot(x=data['y'])
 plt.title('Distribution of classes')
@@ -36,5 +36,17 @@ plt.xlabel('y: target variable')
 
 
 
+
+# %%
+# Correlation matrix
+corr_data = data[numerical + ['y']]
+corr = corr_data.corr()
+cor_plot = sns.heatmap(corr,annot=True,cmap='RdYlBu',linewidths=0.2,annot_kws={'size':10})
+fig=plt.gcf()
+fig.set_size_inches(10,8)
+plt.xticks(fontsize=12,rotation=-45)
+plt.yticks(fontsize=12)
+plt.title('Correlation Matrix')
+plt.show()
 
 # %%
