@@ -39,14 +39,19 @@ plt.xlabel('y: target variable')
 
 # %%
 # Correlation matrix
-corr_data = data[numerical + ['y']]
+data = pd.read_csv('bank-full.csv', sep=';')
+data.y[data.y == 'yes'] = 1
+data.y[data.y == 'no'] = 0
+data['y'] = data['y'].astype('str').astype('int')
+cmap = sns.diverging_palette(220, 10, as_cmap=True)
+corr_data = data
 corr = corr_data.corr()
-cor_plot = sns.heatmap(corr,annot=True,cmap='RdYlBu',linewidths=0.2,annot_kws={'size':10})
+cor_plot = sns.heatmap(corr,annot=True,cmap=cmap,linewidths=0.2,annot_kws={'size':10})
 fig=plt.gcf()
 fig.set_size_inches(10,8)
 plt.xticks(fontsize=12,rotation=-45)
 plt.yticks(fontsize=12)
-plt.title('Correlation Matrix')
+plt.title('Bank marketing dataset correlation matrix')
 plt.show()
 
 # %%
