@@ -24,6 +24,7 @@ data = pd.read_csv('bank-full.csv', sep=';')
 data[['pdays', 'campaign', 'previous','age','duration']].describe()
 # Lets calculate Outlier values
 # Outliers in Age, Duration, pdays, campaign
+#Pdays will be kept as is, because the values are skewed
 # Remove values over 1.5 * IQR above third quartile
 # Remove values less than 1.5 * IQR below first quartile
 
