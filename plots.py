@@ -43,6 +43,8 @@ data = pd.read_csv('bank-full.csv', sep=';')
 data.y[data.y == 'yes'] = 1
 data.y[data.y == 'no'] = 0
 data['y'] = data['y'].astype('str').astype('int')
+
+
 cmap = sns.diverging_palette(220, 10, as_cmap=True)
 corr_data = data
 corr = corr_data.corr()
